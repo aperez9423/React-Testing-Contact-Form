@@ -40,12 +40,6 @@ test("contains Email input field that works", () => {
   expect(input.value).toBe("This is a message");
 });
 
-test("submit button functionality", () => {
-  const { getByTestId, getByRole } = render(<ContactForm/>);
-  const onSubmit = getByTestId(/submit/i);
-  fireEvent.click(getByRole('submit'), onSubmit)
-})
-
 test("check maxlength on name", async () => {
   const { getByTestId, queryByText } = render(<ContactForm />);
   const firstName = getByTestId(/firstname/i);
@@ -58,4 +52,10 @@ test("check maxlength on name", async () => {
   await waitFor( () => {
     expect(queryByText(/looks/i));
   })
+});
+
+test("submit button functionality", () => {
+  const { getByTestId, getByRole } = render(<ContactForm/>);
+  const onSubmit = getByTestId(/submit/i);
+  fireEvent.click(getByRole('submit'), onSubmit)
 });
